@@ -1,4 +1,10 @@
 class ArticlesController < ApplicationController
+    before_action :set_article, only: [:edit, :update, :show, :destroy]
+    
+    def set_article
+        @article = Article.find(params[:id])
+    end
+    
     def index
         @articles = Article.all
     end
@@ -8,15 +14,12 @@ class ArticlesController < ApplicationController
     end
     
     def show
-        @article = Article.find(params[:id])
     end
     
     def edit
-        @article = Article.find(params[:id])
     end
     
     def update
-        @article = Article.find(params[:id]) #in order to get the current editing object
         if @article.update(article_params) #send in the variables into the database
             flash[:notice] = "Article was saved"
             redirect_to article_path(@article)
@@ -26,7 +29,7 @@ class ArticlesController < ApplicationController
     end
     
     def destroy
-        @article = Article.find(params[:id])
+
         @article.destroy
         flash[:notice] = "article was successfully destroyed"
         redirect_to root_path
