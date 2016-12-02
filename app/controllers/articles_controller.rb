@@ -7,6 +7,18 @@ class ArticlesController < ApplicationController
         @article = Article.find(params[:id])
     end
     
+    def edit
+        @article = Article.find(params[:id])
+    end
+    
+    def update
+        @article = Article.find(params[:id]) #in order to get the current editing object
+        if @article.update(article_params) #send in the variables into the database
+            flash[:notice] = "Article was saved"
+            redirect_to article_path(@article)
+        end
+    end
+    
     def create
         @article = Article.new(article_params)
         if @article.save
@@ -15,7 +27,6 @@ class ArticlesController < ApplicationController
         else
             render 'new'
         end
-
     end
     
     private
