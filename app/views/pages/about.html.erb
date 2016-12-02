@@ -1,0 +1,61 @@
+<html>
+<head>
+<title>This is a default page</title>
+</head>
+
+<style>
+article {
+    margin-left: 170px;
+    border-left: 1px solid gray;
+    padding: 1em;
+    overflow: hidden;
+}
+nav {
+    float: left;
+    max-width: 160px;
+    margin: 0;
+    padding: 1em;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+</style>
+
+<body>
+<div id = "wrapper">
+<div style ="height: 50px">
+</div>
+<div>
+<h1 align = "center" style ="color: red; margin-bottom:20px">Ruby on Rails Default Page</h1>
+</div>
+<div style = "border-style: solid; border-color: orange; height: 325px">
+<nav>
+  <ul>
+    <li><%= link_to 'Home', root_path %></li>
+    <li><a href="#">Learn</a></li>
+    <li><a href="#">Contribute</a></li>
+  </ul>
+</nav>
+<article>
+<header>Rails</header>
+<br/>Rails is a software library that extends the Ruby programming language. David Heinemeier Hansson is its creator. He gave it the name “Ruby on Rails,” though it is often just called “Rails.”
+
+<br/>It is software code that is added to the Ruby programming language. Technically, it is a package library (specifically, a RubyGem), that is installed using the operating system command-line interface.
+
+<br/>Rails is a framework for building websites. As such, Rails establishes conventions for easier collaboration and maintenance. These conventions are codified as the Rails API (the application programming interface, or directives that control the code). The Rails API is documented online and described in books, articles, and blog posts. Learning Rails means learning how to use the Rails conventions and its API.
+
+<br/>Rails combines the Ruby programming language with HTML, CSS, and JavaScript to create a web application that runs on a web server. Because it runs on a web server, Rails is considered a server-side, or “back end,” web application development platform (the web browser is the “front end”). Later, this article will describe web applications in greater depth and show why a web development framework is needed to build complex websites.
+
+<br/>Rails, in a larger sense, is more than a software library and an API. Rails is the central project of a vast community that produces software libraries that simplify the task of building complex websites. Members of the Rails community share many core values, often use the same tools, and support each other with an informal network that is built on volunteerism. Overlapping the informal community is an economic network that includes jobs, recruiters, consulting firms, conferences, businesses that build websites with Rails, and investors that fund startups. Rails is popular among web startups, significantly because the pool of open source software libraries (RubyGems, or “gems”) makes it possible to build complex sites quickly.
+
+<br/>Read on for a more detailed look at Rails. First, we’ll look at why Rails uses the Ruby programming language. We’ll consider why Rails is popular, review some basic concepts, then look at Rails from six different perspectives to understand it better.
+</article>
+</div>
+<footer style="background-color: black; position: absolute; bottom: 0; left: 0; width: 100%">
+<strong style = "color:white">Justin Hu Was Here</strong>
+</footer>
+<div>
+</body>
+</html>
