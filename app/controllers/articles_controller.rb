@@ -13,6 +13,7 @@ class ArticlesController < ApplicationController
         @article = Article.new
     end
     
+    
     def show
     end
     
