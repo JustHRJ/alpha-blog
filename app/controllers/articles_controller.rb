@@ -20,7 +20,16 @@ class ArticlesController < ApplicationController
         if @article.update(article_params) #send in the variables into the database
             flash[:notice] = "Article was saved"
             redirect_to article_path(@article)
+        else
+            render 'edit'
         end
+    end
+    
+    def destroy
+        @article = Article.find(params[:id])
+        @article.destroy
+        flash[:notice] = "article was successfully destroyed"
+        redirect_to root_path
     end
     
     def create
