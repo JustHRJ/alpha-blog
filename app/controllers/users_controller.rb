@@ -1,4 +1,12 @@
 class UsersController < ApplicationController
+   before_action :set_user, only: [:show, :edit, :update, :destroy]
+   
+   def set_user
+    @user = User.find(params[:id])
+   end
+   
+   def destroy
+   end
    
    def new
        @user = User.new
@@ -15,15 +23,14 @@ class UsersController < ApplicationController
     end
     
     def show
-       @user = User.find(params[:id])
     end
     
     def edit
-        @user = User.find(params[:id])
+
     end
     
     def update
-        @user = User.find(params[:id])
+
         if @user.update(user_params)
             flash[:success] = "successfully updated user"
             redirect_to user_path(@user)
