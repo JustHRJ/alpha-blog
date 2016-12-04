@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
    before_action :set_user, only: [:show, :edit, :update, :destroy]
+   before_action :require_same_user, only: [:edit, :update, :destroy]
    
 
    def index
@@ -28,11 +29,9 @@ class UsersController < ApplicationController
     end
     
     def edit
-
     end
     
     def update
-
         if @user.update(user_params)
             flash[:success] = "successfully updated user"
             redirect_to user_path(@user)
@@ -46,9 +45,15 @@ class UsersController < ApplicationController
         params.require(:user).permit(:username, :email, :password)
     end
     
-    
    def set_user
     @user = User.find(params[:id])
+   end
+   
+   def require_same_user
+        if !logged_in? ||current_user != @user
+            flash[:danger]= 'You are not authorised to modify the User'
+            redirect_to users_path
+        end
    end
    
 end
