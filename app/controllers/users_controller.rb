@@ -1,13 +1,16 @@
 class UsersController < ApplicationController
    before_action :set_user, only: [:show, :edit, :update, :destroy]
    before_action :require_same_user, only: [:edit, :update, :destroy]
-   
+   before_action :require_admin_only, only: [:destroy]
 
    def index
     @users = User.paginate(page: params[:page], per_page: 3)
    end
    
    def destroy
+       @user.destroy
+       flash[:danger] = "Users and their articles have been destroyed"
+       redirect_to users_path
    end
    
    def new
@@ -41,6 +44,8 @@ class UsersController < ApplicationController
         end
     end
     
+    
+    
     private 
     def user_params
         params.require(:user).permit(:username, :email, :password)
@@ -51,8 +56,15 @@ class UsersController < ApplicationController
    end
    
    def require_same_user
-        if !logged_in? ||current_user != @user
+        if !logged_in? || (current_user != @user && !current_user.admin?)
             flash[:danger]= 'You are not authorised to modify the User'
+            redirect_to users_path
+        end
+   end
+   
+   def require_admin_only
+        if !logged_in? and !current_user.admin?
+            flash[:danger] = "You are not authorised to delete user"
             redirect_to users_path
         end
    end
