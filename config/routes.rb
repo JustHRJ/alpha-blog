@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   # root 'welcome#index'
   resources :articles
   resources :users, except: [:new]
+  resources :categories, except: [:destroy]
+  
   get 'about', to: 'pages#about'
   get 'signup', to: 'users#new'
   get 'login', to: 'sessions#new'
