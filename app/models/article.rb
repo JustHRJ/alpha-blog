@@ -1,5 +1,7 @@
 class Article < ActiveRecord::Base
     belongs_to :user
+    has_many :article_categories
+    has_many :categories, through: :article_categories
     
     #adding validations to maintain integrity
     validates :title, presence: true, length: {minimum: 3, maximum: 50}
